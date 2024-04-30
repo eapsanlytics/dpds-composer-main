@@ -1,0 +1,41 @@
+{
+  "MARKET_DICT": {
+    "ana": { "affiliates": [ 10 ] },
+    "europe": { "affiliates": [ 30, 40, 60, 90, 110, 150, 160, 210, 250, 470, 480, 570 ] },
+    "india": { "affiliates": [ 430 ] },
+    "japan": { "affiliates": [ 70 ] },
+    "korea": { "affiliates": [ 180 ] },
+    "latam": { "affiliates": [ 170 ] },
+    "msb": { "affiliates": [100] },
+    "taiwan": { "affiliates": [130] },
+    "thailand": { "affiliates": [200] },
+    "vietnam": { "affiliates": [500] }
+  },
+  "MARKET_LISTS": {
+    "PURCHASE_PREDICTION": [ "ana", "europe", "india", "japan", "korea", "latam", "msb", "taiwan", "thailand" ],
+    "RENEWAL": [ "india", "korea", "msb", "taiwan", "thailand", "vietnam" ]
+  },
+  "DATE_CONSTANTS": {
+    "PP_START_MONTH": 202101,
+    "RENEWAL_START_MONTH": 202008,
+    "RFM_START_MONTH": 201701
+  },
+  "DS_DET_DAILY_SUMMARY_VOL_ABO_TABLESPEC": "amw-dna-coe-working-ds-dev.feature_store_staging.rfm_stage1_ds_det_daily_summary_vol_abo",
+  "RENEWAL_SPONSOR_INFO_TABLESPEC": "amw-dna-coe-working-ds-dev.feature_store_staging.renewal_final_sponsor_info",
+  "RFM_TENURE_STAGING_TABLESPEC": "amw-dna-coe-working-ds-dev.feature_store_staging.rfm_final_tenure",
+  "RFM_DATA_PP_STAGING_TABLESPEC": "amw-dna-coe-working-ds-dev.feature_store_staging.rfm_affiliate_final_data",
+  "RFM_DATA_RENEWAL_STAGING_TABLESPEC": "amw-dna-coe-working-ds-dev.feature_store_staging.rfm_country_final_data",
+  "RFM_MONTHLY_BV_PER_ABO_TABLESPEC": "amw-dna-coe-working-ds-dev.feature_store_staging.rfm_final_monthly_bv_per_abo",
+  "RFM_DAYS_TENURE": 120,
+  "RFM_MONTHS_OUT_START_FUTURE_PERIOD": 12,
+  "RFM_MONTHS_OUT_END_FUTURE_PERIOD": 24,
+  "SENSOR_INTERVAL": 3600,
+  "SPONSOR_INFO_TABLESPEC": "amw-dna-coe-working-ds-dev.feature_store_staging.renewal_stage1_sponsor_info",
+  "DATAFORM_REGION": "us-central1",
+  "DATAFORM_PROJECT_ID": "amw-dna-coe-working-ds-dev",
+  "DATAFORM_DEFAULT_DATABASE": "amw-dna-coe-working-ds-dev",
+  "DATAFORM_REPOSITORY_ID": "dpds-dataform-feature-store",
+  "DATAFORM_GIT_COMMITISH": "feature_store",
+  "DATAFORM_COUNTRY_METRICS_TAGS": [ "country_metrics" ],
+  "DATAFORM_RENEWALS_TAGS": [ "renewals" ]
+}

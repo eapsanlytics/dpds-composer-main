@@ -1,0 +1,43 @@
+# Workflow to deploy the github repo to a Cloud Composer GCS Bucket
+
+name: publish_ds_dev_to_gcs
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the dev branch
+on:
+  pull_request:
+    branches: [ ds-dev ]
+    types: [closed]
+
+jobs:
+  sync_to_gcs:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    environment: development
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: ${{ secrets.WORKLOAD_ID_PROVIDER }}
+        service_account: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+      with:
+        project_id: ${{ secrets.GCP_PROJECT }}
+        version: '>= 363.0.0'
+
+    - name: Deploy
+      env:
+        GCS_BUCKET: ${{ secrets.COMPOSER_GCS_BUCKET }}
+      run: |-
+        gsutil -m rsync -x "^notebooks|^ps_samples|^scripts|^\.git|^\.vscode|^\.pylintrc|^README\.me|^gha-creds-.*" -R /home/runner/work/dpds-composer/dpds-composer gs://$GCS_BUCKET/dags
